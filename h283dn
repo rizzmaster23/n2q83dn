@@ -1,0 +1,17 @@
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+local function slowDownAnimations()
+    for _, track in pairs(humanoid:GetPlayingAnimationTracks()) do
+        track:AdjustSpeed(0)
+    end
+end
+
+slowDownAnimations()
+
+while true do
+    wait(0.1)
+    slowDownAnimations()
+end
